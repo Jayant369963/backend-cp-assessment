@@ -25,6 +25,7 @@ public class UpdateTodoItemCommand : IRequest<bool>
             {
                 var todoItem = await _todoContext.TodoItems.Where(a => a.Id == command.Id).SingleOrDefaultAsync(cancellationToken);
 
+                // TODO: setup validation on the command using Fluent validators & DI
                 if (todoItem == null)
                 {
                     return false;

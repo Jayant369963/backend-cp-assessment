@@ -18,6 +18,7 @@ public class CreateTodoItemCommand : IRequest<TodoItem>
 
         public async Task<TodoItem> Handle(CreateTodoItemCommand command, CancellationToken cancellationToken)
         {
+            // TODO: setup validation on the command using Fluent validators & DI
             if (await TodoDescriptionAlreadyExistsAsync(command.Description, cancellationToken))
             {
                 throw new InvalidOperationException("Description already exists");
